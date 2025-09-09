@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "77433550-c58f-4a3c-a88a-3aca8c07a614",
+		"name": "faculty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18960265"
+	},
+	"item": [
+		{
+			"name": "get token ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.variables.get(\"Base_url30\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"Base_url30\", \"rania\");\r",
+							"console.log(pm.collectionVariables.get(\"Base_url30\"));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"username\": \"raniamokhtar09@gmail.com\",\r\n \"password\": \"Gq2m89cof5%dZ82h&Svw^*E8|\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://facultysystemsite.com/wp-json/learnpress/v1/token/",
+					"protocol": "https",
+					"host": [
+						"facultysystemsite",
+						"com"
+					],
+					"path": [
+						"wp-json",
+						"learnpress",
+						"v1",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "karimqwerty30@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "KamG gTg6 w09R BQpi ytf2 ewwU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic base64(admin:APPLICATION_PASSWORD)",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://facultysystemsite.com/wp-json/wp/v2/users/me",
+					"protocol": "https",
+					"host": [
+						"facultysystemsite",
+						"com"
+					],
+					"path": [
+						"wp-json",
+						"wp",
+						"v2",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic base64(admin:APPLICATION_PASSWORD)",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"raniaAli2\",\r\n  \"email\": \"rania11119955@gmail.com\",\r\n  \"password\": \"Rania@123\",\r\n  \"first_name\": \"rania\",\r\n  \"last_name\": \"mokhtar\",\r\n  \"roles\": [\"student\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://facultysystemsite.com//wp-json/wp/v2/users",
+					"protocol": "https",
+					"host": [
+						"facultysystemsite",
+						"com"
+					],
+					"path": [
+						"",
+						"wp-json",
+						"wp",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add course",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFjdWx0eXN5c3RlbXNpdGUuY29tIiwiaWF0IjoxNzU1MzQ0NTUxLCJuYmYiOjE3NTUzNDQ1NTEsImV4cCI6MTc1NTk0OTM1MSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.P-xgtEfZdfTOL313ZrOF_SFPh1qh3kFpteQUe_7LlK4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic base64(admin:APPLICATION_PASSWORD)",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"title\": \" كورس كورس PHP للمبتدئين\",\r\n \"status\": \"publish\",\r\n \"content\": \"وصف الكورس...\",\r\n \"price\": \"100\",\r\n \"sale_price\": \"80\",\r\n \"categories\": [ { \"id\": 12 }, { \"id\": 15 } ],\r\n \"tags\": [ { \"id\": 34 }, { \"id\": 56 } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://facultysystemsite.com/wp-json/learnpress/v1/courses",
+					"protocol": "https",
+					"host": [
+						"facultysystemsite",
+						"com"
+					],
+					"path": [
+						"wp-json",
+						"learnpress",
+						"v1",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course enroll",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFjdWx0eXN5c3RlbXNpdGUuY29tIiwiaWF0IjoxNzU1MjU5Mjg0LCJuYmYiOjE3NTUyNTkyODQsImV4cCI6MTc1NTg2NDA4NCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.pOHhdrWH6O-CxU3u5dbOFUDhjfmD1oKWvsK_LNV3DMI",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 19650\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://facultysystemsite.com/wp-json/learnpress/v1/courses/enroll?Authorization=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFjdWx0eXN5c3RlbXNpdGUuY29tIiwiaWF0IjoxNzU1MjU5Mjg0LCJuYmYiOjE3NTUyNTkyODQsImV4cCI6MTc1NTg2NDA4NCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.pOHhdrWH6O-CxU3u5dbOFUDhjfmD1oKWvsK_LNV3DMI&Content-Type=application/json",
+					"protocol": "https",
+					"host": [
+						"facultysystemsite",
+						"com"
+					],
+					"path": [
+						"wp-json",
+						"learnpress",
+						"v1",
+						"courses",
+						"enroll"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFjdWx0eXN5c3RlbXNpdGUuY29tIiwiaWF0IjoxNzU1MjU5Mjg0LCJuYmYiOjE3NTUyNTkyODQsImV4cCI6MTc1NTg2NDA4NCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.pOHhdrWH6O-CxU3u5dbOFUDhjfmD1oKWvsK_LNV3DMI"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all courses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmFjdWx0eXN5c3RlbXNpdGUuY29tIiwiaWF0IjoxNzU1MjYwNTg4LCJuYmYiOjE3NTUyNjA1ODgsImV4cCI6MTc1NTg2NTM4OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.z9eG4gb5FUJvHB3zfhJbG2V_1IyTlqvPcEQwEHr616w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://facultysystemsite.com/wp-json/learnpress/v1/courses",
+					"protocol": "https",
+					"host": [
+						"facultysystemsite",
+						"com"
+					],
+					"path": [
+						"wp-json",
+						"learnpress",
+						"v1",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Base_url22",
+			"value": ""
+		},
+		{
+			"key": "Base_url30",
+			"value": ""
+		}
+	]
+}
